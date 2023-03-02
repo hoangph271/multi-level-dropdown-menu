@@ -18,12 +18,11 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const itemsMenu = [
-  getItem('Navigation 1', 'sub1'),
-  getItem('Navigation 2', 'sub2'),
-  getItem('Navigation 3', 'sub3'),
+  getItem("Navigation 1", "sub1"),
+  getItem("Navigation 2", "sub2"),
+  getItem("Navigation 3", "sub3"),
 ];
 const MenuItems = ({ items, depthLevel }) => {
-  console.log(items, depthLevel);
   const [dropdown, setDropdown] = useState(false);
 
   let ref = useRef();
@@ -89,7 +88,6 @@ const MenuItems = ({ items, depthLevel }) => {
             submenus={items.submenu}
             dropdown={dropdown}
           />
-
         </>
       ) : !items.url && items.submenu ? (
         <>
@@ -102,9 +100,8 @@ const MenuItems = ({ items, depthLevel }) => {
             {items.title}{" "}
             {depthLevel > 0 ? <span>&raquo;</span> : <span className="arrow" />}
           </button>
-          {
-            depthLevel === 1 && items.submenu && (
-              <Menu
+          {depthLevel === 1 && items.submenu && (
+            <Menu
               style={{
                 width: 256,
               }}
@@ -113,17 +110,14 @@ const MenuItems = ({ items, depthLevel }) => {
               mode="inline"
               items={itemsMenu}
             />
-            )
-          }
-          {
-            depthLevel !== 1 && items.submenu && (
-              <Dropdown
-                depthLevel={depthLevel}
-                submenus={items.submenu}
-                dropdown={dropdown}
-              />
-            )
-          }
+          )}
+          {depthLevel !== 1 && items.submenu && (
+            <Dropdown
+              depthLevel={depthLevel}
+              submenus={items.submenu}
+              dropdown={dropdown}
+            />
+          )}
         </>
       ) : (
         <Link to={items.url}>{items.title}</Link>

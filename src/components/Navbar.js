@@ -1,20 +1,20 @@
-import { menuItems } from '../menuItems';
-import MenuItems from './MenuItems';
+import { menuItems } from "../menuItems";
+import MenuItems from "./MenuItems";
+
+const AMenu = () => {
+  return (
+    <ul className="menus">
+      {menuItems.map((menu) => {
+        return <MenuItems items={menu} key={index} />;
+      })}
+    </ul>
+  );
+};
+
 const Navbar = () => {
   return (
     <nav>
-      <ul className="menus">
-        {menuItems.map((menu, index) => {
-          const depthLevel = 0;
-          return (
-            <MenuItems
-              items={menu}
-              key={index}
-              depthLevel={depthLevel}
-            />
-          );
-        })}
-      </ul>
+      <AMenu />
     </nav>
   );
 };
